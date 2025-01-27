@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Menu</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="static/script.js"></script>
+</head>
+
+<body>
+    <section>
+        <nav>
+            <header>
+                <div class="imgBx">
+                    <img src="{{ url_for('static', filename='Slide1.png') }}" alt="Logo">
+                    <h3>VISTA LEARN<br></h3>
+                </div>
+                <div class="toggle">
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <i class="fa-solid fa-chevron-left"></i>
+                </div>
+            </header>
+            <menu>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-house"></i>
+                            <span>home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('dotolist') }}">
+                            <i class="fa-solid fa-sticky-note"></i>
+                            <span>updates</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('audiobook') }}">
+                            <i class="fa-solid fa-book-reader fa-headphones"></i>
+                            <span>Audiobook</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('about') }}">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <span>about</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url_for('notes')}}">
+                            <i class="fa-solid fa-sticky-note"></i>
+                            <span>Notes</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="mode">
+                    <div class="icon">
+                        <a href="{{url_for('support')}}">
+
+                            <i class="fa-solid fa-hands-helping"></i>
+                            <span>Support</span>
+                        </a>
+                    </div>
+                    <div class="dayNight">
+                        <div class="switch">
+                            <div class="iconBx">
+                                <i class="fa-solid fa-moon"></i>
+                                <i class="fa-solid fa-sun"></i>
+                            </div>
+                        </div>
+                        <span class="switchText">dark mode</span>
+                    </div>
+                </div>
+            </menu>
+        </nav>
+        <div class="chat-container" id="chat-container">
+            <!-- Chat messages will be displayed here -->
+            <br><br><br><br><br><br><br><br>
+            <br><br>
+            <div class="user-input">
+                
+                <form id="user-input-form">
+                    <input type="text" id="user-input" placeholder="Type your message...">
+                    <button type="button" id="send-btn" title="Send Message">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    <button type="button" id="voice-btn" title="Toggle Listening">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                
+                </form>
+            </div>
+        </div>
+        
+        <!-- Add this div to show listening status -->
+        <div id="listening-status"></div>
+
+        <main>
+            <center>
+                <img src="{{ url_for('static', filename='Slide1.png') }}" alt="Logo" width="60" height="60">
+            </center>
+            <h2>VISTA LEARN<br><span>Discover.Grow.Achieve</span></h2>
+        </main>
+    </section>
+
+    <script>
+$(document).ready(function () {
+    const chatContainer = $('#chat-container');
+    const userInputField = $('#user-input');
+    const sendButton = $('#send-btn');
+    const voiceButton = $('#voice-btn');
+    const listeningStatus = $('#listening-status');
+    const recognition = new webkitSpeechRecognition(); // For Chrome
+    recognition.continuous = true;
+    recognition.interimResults = false;
+
+    function toggleListeningStatus() {
+        const isListening = listeningStatus.text() === 'Listening with mic';
+
+        if (isListening) {
+            listeningStatus.text('Not listening');
+            // Add logic to stop voice input or perform other actions
+        } else {
+            listeningStatus.text('Listening with mic');
+            // Add logic to start voice input or perform other actions
+            // captureVoiceInput();
+        }
+    }
+
+    function appendUserMessage(message) {
+        const messageContainer = $('<div class="message-container user-message-container">');
+        const userMessage = $('<div class="user-message">').text('You: ' + message);
+        messageContainer.append(userMessage);
+        chatContainer.append(messageContainer);
+        scrollToBottom();
+    }
+
+    function appendBotMessage(message) {
+        const messageContainer = $('<div class="message-container bot-message-container">');
+        const botMessage = $('<div class="bot-message">').text(message);
+        messageContainer.append(botMessage);
+        chatContainer.append(messageContainer);
+        scrollToBottom();
+    }
+
+    function scrollToBottom() {
+        chatContainer.scrollTop(chatContainer.prop('scrollHeight')-700);
+    }
+
+    function sendMessage() {
+        const userInput = userInputField.val();
+
+        appendUserMessage(userInput);
+
+        $.ajax({
+            url: '/process_text',
+            method: 'POST',
+            data: { user_input: userInput },
+            success: function (response) {
+                console.log(response);
+                const botResponse = 'Bot: ' + response.response;  // Verify that the key is correct
+                appendBotMessage(botResponse);
+            },
+            error: function (xhr, status, error) {
+                console.error('Error in AJAX request:');
+                console.log('XHR:', xhr);
+                console.log('Status:', status);
+                console.log('Error:', error);
+            },
+        });
+
+        userInputField.val('');
+    }
+
+    voiceButton.click(toggleListeningStatus);
+    sendButton.click(sendMessage);
+});
+
+
+</script>
+</body>
+
+</html>

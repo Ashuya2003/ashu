@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audiobook Player</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='audio.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+    <div id="player-container">
+        <div class='container'>
+            <div class='center list flex-column'>
+                <div class='card flex-row open'data-audio="static/tamil_silappadhikaram_ilangoadigal_ck_64kb.mp3">
+ >
+                    <img id="play-button1" src="{{ url_for('static', filename='kannaki.webp') }}" alt="Play Button">
+                    <div class='flex-column info'>
+                        <div class='title'>SILAPPATHIKARAM</div>
+                        <div class='author'>Ilango Adigal</div>
+                        <div class='hidden bottom summary'>
+                            Silappathikaram is an ancient Tamil epic written by Ilango Adigal in the 2nd century CE.
+                            The story revolves around Kovalan and Kannagi, a married couple from Puhar.
+                            Kovalan falls in love with a courtesan named Madhavi, leading to financial ruin and his wrongful
+                            execution by the Pandya king. Kannagi seeks justice, proves Kovalan's innocence, and in her
+                            fury, destroys the city of Madurai. The epic explores themes of love, justice, and the
+                            consequences of corruption, showcasing the moral and ethical values of ancient Tamil society.
+                        </div>
+                    </div>
+                    <div class='flex-column group'>
+                        <div class='members'>
+                            <span class='current'></span>
+                            <span class='max'></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional flex columns -->
+
+                <div class='card flex-row open'data-audio="static/thought.m4a">
+                    <img id="play-button1" src="{{ url_for('static', filename='thought.jpeg') }}" alt="play-button" class="book" >
+                    <div class='flex-column info'>
+                        <div class='title'>THOUGHT VIBRATION</div>
+                        <div class='author'>william walker atkinson</div>
+                        <div class='hidden bottom summary'>
+                            "Vibration Thoughts" is a concept associated with the idea 
+                            that our thoughts and emotions emit energy or vibrations that can impact our experiences 
+                            and the world around us. It suggests that positive and negative thoughts can attract similar energies, influencing one's life and well-being.                        </div>
+                    </div>
+                    <div class='flex-column group'>
+                        <div class='members'>
+                            <span class='current'></span> 
+                            <span class='max'></span>
+                        </div>
+                        <div class='hidden bottom'>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flex column 2 -->
+                <div class='card flex-row open'data-audio="static/monk.mp3">
+                  <img id="play-button" src="{{ url_for('static', filename='monk.jpeg') }}" alt="play-button"
+                  class="book">
+
+                    <div class='flex-column info'>
+                        <div class='title'>THINK LIKE A MONK</div>
+                        <div class='author'>Jayshetty</div>
+                        <div class='hidden bottom summary'>
+                            "Think Like a Monk" offers transformative insights from Jay Shetty's monastic experiences,
+                             guiding readers to discover purpose and mindfulness for a more fulfilling life.
+                             The book blends ancient wisdom with practical advice, inspiring a monk-inspired mindset in everyday living.                            </div>
+                    </div>
+                    <div class='flex-column group'>
+                        <div class='members'>
+                            <span class='current'></span> 
+                            <span class='max'></span>
+                        </div>
+                        <div class='hidden bottom'>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flex column 3 -->
+                <div class='card flex-row' data-audio="static/mega.m4a">
+                  <img id="play-button" src="{{ url_for('static', filename='mega.jpg')}}" alt="play-button" class="book">
+                   <div class='flex-column info'>
+                        <div class='title'>MEGA LIVING</div>
+                        <div class='author'>Robin Sharma</div>
+                        <div class='hidden bottom summary'>
+                            "Megaliving" by Robin Sharma is a motivational book that provides practical strategies for achieving success and
+                             living a fulfilling life. Sharma shares insights on personal development, productivity, and adopting positive habits, 
+                            encouraging readers to lead a life of purpose and excellence.
+                        </div>
+                    </div>
+                    <div class='flex-column group'>
+                        <div class='members'>
+                            <span class='current'></span> 
+                            <span class='max'></span>
+                        </div>
+                        <div class='hidden bottom'>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flex column 4 -->
+                <div class='card flex-row' data-audio="static/ikigai.mp3">
+                  <img id="play-button" src="{{ url_for('static', filename='ikigai.jpg') }}" alt="play-button" class="book">
+
+                    <div class='flex-column info'>
+                        <div class='title'>IKIGAI</div>
+                        <div class='author'>Héctor García and Francesc Miralles</div>
+                        <div class='hidden bottom summary'>
+                            "Ikigai: The Japanese Secret to a Long and Happy Life" explores the concept of Ikigai, 
+                            the intersection of what you love, what you are good at, what the world needs, and
+                             what you can be paid for. The book delves into the principles of finding purpose, fulfillment, 
+                            and longevity by aligning one's passions with meaningful contributions to the world.
+                        </div>
+                    </div>
+                    <div class='flex-column group'>
+                        <div class='members'>
+                            <span class='current'></span> 
+                            <span class='max'></span>
+                        </div>
+                        <div class='hidden bottom'>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flex column 5 -->
+                <div class='card flex-row' data-audio="static/chakras.mp3">
+                  <img id="play-button" src="{{ url_for('static', filename='chakra.jpeg') }}" alt="play-button" class="book">
+
+                    <div class='flex-column info'>
+                        <div class='title'>THE SEVEN CHAKRAS</div>
+                        <div class='author'></div>
+                        <div class='hidden bottom summary'>
+                            The seven chakras represent energy centers in the body, influencing physical, emotional, and spiritual aspects. 
+                            Balancing these chakras promotes holistic well-being and spiritual harmony.
+                        </div>
+                    </div>
+                    <div class='flex-column group'>
+                        <div class='members'>
+                            <span class='current'></span> 
+                            <span class='max'></span>
+                        </div>
+                        <div class='hidden bottom'>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <!-- ... (remaining HTML code) ... -->
+
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='audio.js') }}"></script>
+</body>
+
+</html>

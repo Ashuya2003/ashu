@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+    <title>Animated Flex Cards</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <input type="radio" name="slide" id="c1" checked>
+            <label for="c1" class="card">
+                <div class="row">
+                    <div class="icon">1</div>
+                    <div class="description">
+                        <h4>ChatBotX</h4>
+                        
+                        <p>ChatBotX is a comprehensive virtual assistant, combining audiobook access, seamless voice and text communication, dynamic to-do lists, and note-taking capabilities for an efficient and organized user experience. 
+                            Experience the future of virtual assistance with ChatBotX.</p> </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c2" >
+            <label for="c2" class="card">
+                <div class="row">
+                    <div class="icon">2</div>
+                    <div class="description">
+                        <h4>Interactive Q&A:</h4>
+                        <p>Allow users to ask questions and receive informative answers.
+                            Implement a knowledge base to store and retrieve relevant information.
+                            </p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c3" >
+            <label for="c3" class="card">
+                <div class="row">
+                    <div class="icon">3</div>
+                    <div class="description">
+                        <h4>Contextual Understanding:</h4>
+                        <p>
+                            Consider the context of the conversation to provide more accurate emotional responses.
+                            Understand how user emotions may evolve during a conversation.</p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c4" >
+            <label for="c4" class="card">
+                <div class="row">
+                    <div class="icon">4</div>
+                    <div class="description">
+                        <h4>Sentiment Analysis:</h4>
+                        <p>
+                            Perform sentiment analysis on user messages to understand the overall sentiment of the conversation.
+                            Adjust responses based on positive or negative sentiment.</p>
+                    </div>
+                </div>
+            </label>
+        </div>
+    </div>
+</body>
+</html>
